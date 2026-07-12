@@ -35,7 +35,11 @@ BrailleSCARA is a 4-DOF SCARA robot that converts printed text into Braille docu
 
 \textbf{How it works --- plain and simple:}
 \begin{enumerate}[noitemsep]
-    \item A camera reads the printed page. ADI's MAX78000 (hardware CNN accelerator) runs OCR on-chip --- no laptop needed.
+    \item \textbf{Dual Input Mode:} 
+    \begin{itemize}[noitemsep, label={-}]
+        \item \textit{Physical:} A camera reads a printed page. ADI's MAX78000 runs OCR on-chip to extract text.
+        \item \textit{Digital:} Teachers can directly upload PDF documents or SVG diagrams via Bluetooth using the MAX32690 BLE 5.2 microcontroller.
+    \end{itemize}
     \item Software converts the recognized text to Bharati Braille encoding and generates dot coordinates following ISO 17049 spacing standards.
     \item The SCARA arm picks a blank Braille paper sheet from a tray and places it on the embossing bed.
     \item The arm moves to each dot position with $\pm$0.05 mm accuracy using ADI's ADSP-CM419 + TMC4671 closed-loop FOC drive. A solenoid fires for 50 ms, pushing a 2 mm steel pin through the paper into an anvil hole, creating a raised dot.
@@ -89,6 +93,9 @@ But the harder, completely unsolved problem is \textbf{tactile graphics.} Educat
 Existing Braille machines (BrailleRAP, Index Braille) produce text only --- rows of dots. They cannot draw freeform diagrams. The machines that CAN draw tactile graphics (ViewPlus Tiger, PIAF) cost \textbf{\textcurrency 3--25 Lakh} and are found only in a handful of elite institutions. \textbf{There is no device under \textcurrency 10 Lakh in India that can produce a touchable version of a science textbook diagram.}
 
 A SCARA robot can solve this because it has the two things this problem needs: \textbf{precise XY positioning} (to place dots and trace paths) and \textbf{controlled Z-axis force} (to emboss paper without tearing it). ADI's motor control technology provides the sub-0.1 mm precision that ISO-compliant Braille requires.
+
+\vspace{0.5em}
+\textbf{Alignment with UN SDGs:} By replacing \textcurrency 10 Lakh+ imported industrial machines with a sub-\textcurrency 1 Lakh edge-AI robotic solution, BrailleSCARA directly addresses \textbf{UN SDG 4 (Quality Education)} and \textbf{UN SDG 10 (Reduced Inequalities)}. We are taking tactile STEM education out of elite institutions and putting it directly into local blind schools, fundamentally breaking the literacy barrier.
 
 \section{Existing Solutions and How We're Different}
 
