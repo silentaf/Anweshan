@@ -8,6 +8,7 @@
 \usepackage{float}
 \usepackage{array}
 \usepackage{listings}
+\usepackage{amssymb}
 
 % Setup links
 \hypersetup{
@@ -99,6 +100,22 @@ A SCARA robot can solve this because it has the two things this problem needs: \
 \textbf{Alignment with UN SDGs:} By replacing \textcurrency 10 Lakh+ imported industrial machines with a sub-\textcurrency 1 Lakh edge-AI robotic solution, BrailleSCARA directly addresses \textbf{UN SDG 4 (Quality Education)} and \textbf{UN SDG 10 (Reduced Inequalities)}. We are taking tactile STEM education out of elite institutions and putting it directly into local blind schools, fundamentally breaking the literacy barrier.
 
 \section{Existing Solutions and How We're Different}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Feature} & \textbf{Imported Embosser (e.g., ViewPlus)} & \textbf{BrailleSCARA} \\
+\midrule
+Braille Text Production & \checkmark & \checkmark \\
+Tactile STEM Graphics & $\times$ & \checkmark \\
+Per-dot Force Verification & $\times$ & \checkmark \\
+Offline Edge AI OCR & $\times$ & \checkmark \\
+System Cost & \textcurrency 10L+ & $<$\textcurrency 1L \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Literature Survey}
 
@@ -242,9 +259,6 @@ After calibration, BrailleSCARA will run this 5-stage benchmark to generate a "R
 \section{Plan of Action if Selected as Finalist}
 
 \vspace{1em}
-\noindent\framebox[\textwidth]{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{\centering\vspace{2cm}\textbf{[TODO: INSERT GAZEBO SIMULATION SCREENSHOT HERE]}\\Replace this box with an image of your simulated SCARA arm to prove you have already started.\vspace{2cm}}}
-\vspace{1em}
-
 \begin{table}[H]
 \centering
 \begin{tabularx}{\textwidth}{llX}
