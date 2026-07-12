@@ -214,26 +214,21 @@ After calibration, BrailleSCARA will run this 5-stage benchmark to generate a "R
     \caption{System Architecture showing integration of 12 ADI Products}
 \end{figure}
 
-\textbf{ADI Products Used (12 --- each genuinely needed):}
+\textbf{Core ADI Products Used (Strictly Required for Operation):}
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{lll}
 \toprule
-\textbf{\#} & \textbf{Product} & \textbf{Why It's Needed} \\
+\textbf{\#} & \textbf{Product} & \textbf{Why It Is Strictly Needed} \\
 \midrule
-1 & ADSP-CM419 & Motor control DSP --- runs position/velocity PID at 10 kHz \\
-2 & TMC4671 $\times$4 & Hardware FOC --- sinusoidal commutation per joint \\
-3 & MAX78000 & Hardware CNN --- on-chip OCR and dot quality classification \\
-4 & MAX32690 & BLE 5.2 + task orchestration + Braille encoding \\
-5 & AD7124-8 & 24-bit ADC --- force sensor readout for dot verification \\
-6 & AD8418A $\times$4 & Current sense --- FOC phase current feedback \\
-7 & ADuM4135 $\times$4 & Isolated gate drivers --- MOSFET H-bridge driving \\
-8 & AD7380 & 16-bit SAR ADC --- high-speed current digitization \\
-9 & ADIS16470 & IMU --- vibration monitoring during embossing \\
-10 & ADP5054 & Quad SMPS --- multi-rail power for all electronics \\
-11 & ADuM5028 & Isolated DC-DC --- gate driver power isolation \\
-12 & ADT7420 & Temperature sensor --- motor thermal monitoring \\
+1 & ADSP-CM419 & Motor control DSP --- runs the master position/velocity PID loop at 10 kHz \\
+2 & TMC4671 $\times$4 & Hardware FOC --- handles sinusoidal commutation for the 4 joint motors \\
+3 & MAX78000 & Hardware CNN --- executes on-chip OCR and dot quality classification \\
+4 & MAX32690 & BLE 5.2 Microcontroller --- orchestrates PDF uploads and Braille encoding \\
+5 & AD7124-8 & 24-bit ADC --- digitizes the load cell for per-dot force verification \\
+6 & AD8418A $\times$4 & Current sense amplifiers --- critical for FOC phase current feedback \\
+7 & ADP5054 & Quad SMPS --- provides stable multi-rail power for the AI and motor logic \\
 \bottomrule
 \end{tabular}%
 }

@@ -31,17 +31,18 @@ To understand how the robot operates without a PC, here is the complete autonomo
 
 ## 🏗️ System Architecture
 
-Our entire architecture is built around maximizing the efficiency and precision of **12 Analog Devices (ADI)** components. 
+Our entire architecture is built around maximizing the efficiency and precision of **7 Core Analog Devices (ADI)** components. 
 
 <div align="center">
   <img src="BrailleSCARA_BlockDiagram.png" alt="BrailleSCARA System Architecture Block Diagram" width="800">
 </div>
 
-### Core Subsystems:
+### Core Subsystems (Strictly Required):
 *   **Motor Control:** ADSP-CM419 (Outer Loop @ 10 kHz) + TMC4671 (Hardware FOC) ensuring smooth, silent, sub-0.1mm accuracy.
 *   **Edge AI (Vision):** MAX78000 Hardware CNN runs OCR and Braille dot quality classification at `<1mW` power.
 *   **Task Orchestration:** MAX32690 BLE 5.2 handles wireless PDF uploads and master state machine logic.
 *   **Force Feedback:** AD7124-8 24-bit ADC digitizes load cell data to verify every single Braille dot mechanically.
+*   **Power & Current Sense:** ADP5054 Quad SMPS and AD8418A Current Sense amplifiers form the electrical backbone.
 
 ---
 
