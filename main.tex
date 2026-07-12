@@ -134,6 +134,12 @@ System Cost & \textcurrency 10L+ & $<$\textcurrency 1L \\
 
 \textbf{2. Per-dot force verification:} Every Braille machine in existence embosses dots blindly. Ours measures the force-displacement of every single dot using ADI's AD7124-8 (24-bit ADC) and a load cell. If a dot is too shallow, it re-embosses immediately.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{force_verification_diagram.png}
+    \caption{Comparison of traditional blind embossing vs. BrailleSCARA's closed-loop force verification}
+\end{figure}
+
 \textbf{3. On-chip OCR using MAX78000 hardware CNN:} Most student SCARA projects process vision on a laptop. Our system runs OCR and dot quality classification directly on ADI's MAX78000 hardware CNN accelerator. Inference happens in $<$100 $\mu$s at $<$1 mW power, meaning the robot reads a printed page without needing any external computer.
 
 \section{Technology and Methodology}
