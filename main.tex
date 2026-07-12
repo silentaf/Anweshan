@@ -174,15 +174,17 @@ def text_to_dot_coordinates(text, origin_x=0, origin_y=0):
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.55\textwidth]{EndEffector_Sketch.png}
-    \caption{Cross-section of the BrailleSCARA Dual-Mode End-Effector.}
+    \includegraphics[width=0.6\textwidth]{EndEffector_Sketch.png}
+    \caption{Cross-section of the BrailleSCARA Dual-Mode End-Effector. \textbf{[TODO: Replace this sketch with actual Fusion 360 CAD render]}}
 \end{figure}
 
+\vspace{1em}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.65\textwidth]{force_graph.png}
-    \caption{Theoretical Solenoid Embossing Force vs. 140 GSM Braille Paper Yield Resistance.}
+    \includegraphics[width=0.8\textwidth]{force_graph.png}
+    \caption{Calculated Solenoid Force vs. 140 GSM Braille Paper Deformation}
 \end{figure}
+\vspace{1em}
 
 \textbf{Force check (every dot):} AD7124-8 reads a force-sensitive resistor on the stylus mount. If measured force is below the known good threshold, the dot didn't form properly and is re-embossed.
 
@@ -213,7 +215,7 @@ After calibration, BrailleSCARA will run this 5-stage benchmark to generate a "R
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{BrailleSCARA_BlockDiagram.png}
+    \includegraphics[width=1\textwidth]{BrailleSCARA_BlockDiagram.png}
     \caption{System Architecture showing integration of 7 Core ADI Products}
 \end{figure}
 
