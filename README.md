@@ -73,6 +73,5 @@ Our entire architecture is built around maximizing the efficiency and precision 
 *   **Aman Gupta:** Team Lead / Edge AI (MAX78000)
 *   **Aman Rana:** Firmware (FOC, Trajectory)
 *   **Dhyan Modi:** Electronics (ADI Integration)
-*   **Anushka Kasle:** Software (Braille Encoding, IoT)
 *   **Tanmay Singh:** Mechanical (SCARA CAD)
 *   **Dr. Anand D. Darji:** Faculty Mentor
