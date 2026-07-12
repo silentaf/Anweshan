@@ -22,10 +22,17 @@ A mathematical simulation script that models the theoretical force applied by a 
 - Demonstrates the expected operating window for plastic deformation without tearing the paper.
 - Validates the embossing mechanism's feasibility.
 
-## Future Development (Phase 2 & 3)
+## Future Plans
+
+### Technical Roadmap (Phase 2 & 3)
 - Integration of the physical ADSP-CM419 + TMC4671 closed-loop FOC drive.
 - Translation pipeline utilizing `liblouis` for Bharati Braille conversion.
 - Full Gazebo simulation of the pick-and-place and embossing routines.
+
+### Long-Term Impact
+- **Open-source the design:** Publish mechanical CAD and firmware on GitHub so NGOs can replicate it.
+- **Pilot in blind schools:** Partner with the National Association for the Blind to test in 3-5 schools.
+- **Publish results:** Submit the force-verified embossing workflow to an IEEE conference.
 
 ## Team (SVNIT Surat)
 - **Aman Gupta:** Team Lead / Edge AI (MAX78000)
