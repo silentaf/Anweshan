@@ -161,10 +161,10 @@ The core of BrailleSCARA is ADI's precision motor control stack. Four axes are c
 \textbf{Proof of Precision (Required for $\pm$0.05mm Braille accuracy):}
 \begin{lstlisting}[frame=single, basicstyle=\ttfamily\small]
 Braille inter-dot spacing: 2.5mm | Arm reach: 400mm
-Required angular resolution at J1: arctan(0.05/400) = 0.0072°
+Required angular resolution at J1: arctan(0.05/400) = 0.0072 deg
 Encoder CPR needed: 360/0.0072 = 50,000 -> AS5047P (14-bit = 16,384 CPR)
-With 4x interpolation: 65,536 counts -> angular resolution = 0.0055°
-At 400mm reach: positional resolution = 400 * tan(0.0055°) = 0.038mm [PASS]
+With 4x interpolation: 65,536 counts -> angular resolution = 0.0055 deg
+At 400mm reach: positional resolution = 400 * tan(0.0055 deg) = 0.038mm [PASS]
 \end{lstlisting}
 
 \subsection{Braille Encoding Pipeline}
@@ -215,8 +215,7 @@ We don't just claim our robot is precise enough for Braille; we \textbf{PROVE} i
 
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{llX}
+\begin{tabularx}{\textwidth}{llX}
 \toprule
 \textbf{Test} & \textbf{Metric Evaluated} & \textbf{Validation Method} \\
 \midrule
@@ -226,8 +225,7 @@ We don't just claim our robot is precise enough for Braille; we \textbf{PROVE} i
 \textbf{4. Path Accuracy} & Drawing precision & SCARA draws circle. Camera analyzes circularity index. \\
 \textbf{5. Force Control} & Compliant manipulation & SCARA presses against varying stiffness surfaces. ADI force sensor measures overshoot. \\
 \bottomrule
-\end{tabular}%
-}
+\end{tabularx}
 \end{table}
 After calibration, BrailleSCARA will run this 5-stage benchmark to generate a "Robot Report Card" before starting the embossing task. This ensures guaranteed performance metrics rather than assumed specs.
 
