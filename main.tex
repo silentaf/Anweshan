@@ -36,19 +36,11 @@
 BrailleSCARA is a 4-DOF SCARA robot that converts printed text into Braille documents and draws tactile diagrams. This enables blind students to read textbooks and touch STEM illustrations for the first time, at a system cost under \textcurrency 1 Lakh.
 
 \textbf{How it works, plain and simple:}
-\begin{enumerate}[noitemsep]
-    \item \textbf{Dual Input Mode:} 
-    \begin{itemize}[noitemsep, label={-}]
-        \item \textit{Physical:} A camera reads a printed page. ADI's MAX78000 runs OCR on-chip to extract text.
-        \item \textit{Digital:} Teachers can directly upload PDF documents or SVG diagrams via Bluetooth using the MAX32690 BLE 5.2 microcontroller.
-    \end{itemize}
-    \item Software converts the recognized text to Bharati Braille encoding and generates dot coordinates following ISO 17049 spacing standards.
-    \item The SCARA arm picks a blank Braille paper sheet from a tray and places it on the embossing bed.
-    \item The arm moves to each dot position with $\pm$0.05 mm accuracy using ADI's ADSP-CM419 + TMC4671 closed-loop FOC drive. A solenoid fires for 50 ms, pushing a 2 mm steel pin through the paper into an anvil hole, creating a raised dot.
-    \item After each dot, a force sensor read by ADI's AD7124-8 (24-bit ADC) verifies the dot formed correctly. If the dot is too shallow, the arm re-embosses it immediately.
-    \item For tactile diagrams (maps, graphs, geometric figures), the arm traces freeform paths with a spring-loaded ball stylus, creating raised lines that blind students can feel with their fingertips.
-    \item Completed pages are picked and sorted into output trays by page number.
-\end{enumerate}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{BrailleSCARA_Flowchart.png}
+    \caption{End-to-End Operational Flowchart from Input to Tactile Output}
+\end{figure}
 
 \textbf{This workflow demonstrates all four competition capabilities:}
 
