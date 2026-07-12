@@ -7,6 +7,7 @@
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{array}
+\usepackage{listings}
 
 % Setup links
 \hypersetup{
@@ -138,17 +139,17 @@ The core of BrailleSCARA is ADI's precision motor control stack. Four axes are c
 
 \vspace{0.5em}
 \textbf{Proof of Precision (Required for $\pm$0.05mm Braille accuracy):}
-\begin{verbatim}
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily\small]
 Braille inter-dot spacing: 2.5mm | Arm reach: 400mm
 Required angular resolution at J1: arctan(0.05/400) = 0.0072°
 Encoder CPR needed: 360/0.0072 = 50,000 -> AS5047P (14-bit = 16,384 CPR)
 With 4x interpolation: 65,536 counts -> angular resolution = 0.0055°
 At 400mm reach: positional resolution = 400 * tan(0.0055°) = 0.038mm [PASS]
-\end{verbatim}
+\end{lstlisting}
 
 \subsection{Braille Encoding Pipeline}
 Instead of generic pick-and-place, we are implementing a real ISO 17049 compliant text-to-tactile pipeline:
-\begin{verbatim}
+\begin{lstlisting}[frame=single, basicstyle=\ttfamily\small, language=Python]
 # Bharati Braille encoding (actual implementation snippet)
 BRAILLE_MAP = {
     'a': [1,0,0,0,0,0],  # dot 1
@@ -167,7 +168,7 @@ def text_to_dot_coordinates(text, origin_x=0, origin_y=0):
                 dy = (d // 2) * 2.5   # 2.5mm vertical spacing
                 coords.append((cell_x + dx, origin_y + dy))
     return coords
-\end{verbatim}
+\end{lstlisting}
 
 \subsection{Embossing Mechanism \& Quality Verification}
 
