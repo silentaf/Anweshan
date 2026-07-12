@@ -92,19 +92,30 @@ def train_model():
         transforms.Normalize((0.5,), (0.5,)) # Normalize to [-1, 1] for better quantization later
     ])
 
-    print("\n[INFO] To train this model, you need a dataset folder with:")
-    print("  - data/train/pass_dots/")
-    print("  - data/train/fail_dots/")
-    print("Since we don't have the images yet, skipping actual training loop...")
+    print("\n[INFO] Generating synthetic Braille dot dataset for initial validation...")
+    # Generate 1000 synthetic images (64x64)
+    # Class 1 (Good dot): Random noise + bright circle in middle
+    # Class 0 (Bad dot): Just random noise or very faint circle
+    num_samples = 1000
+    X = torch.rand(num_samples, 1, 64, 64) * 0.5 # background noise
+    y = torch.zeros(num_samples, dtype=torch.long)
     
-    # --- Example Training Loop (Uncomment when you have data) ---
-    """
-    train_dataset = torchvision.datasets.ImageFolder(root='./data/train', transform=transform)
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=32, shuffle=True)
+    for i in range(num_samples):
+        if i % 2 == 0:
+            y[i] = 1 # Good dot
+            # Draw a bright 'dot' in the center
+            X[i, 0, 28:36, 28:36] += 0.5 
+    
+    # Create dataset and loader
+    dataset = torch.utils.data.TensorDataset(X, y)
+    train_loader = torch.utils.data.DataLoader(dataset, batch_size=32, shuffle=True)
 
-    epochs = 20
+    epochs = 5
+    print("\nStarting Training Loop...")
     for epoch in range(epochs):
         running_loss = 0.0
+        correct = 0
+        total = 0
         for i, data in enumerate(train_loader, 0):
             inputs, labels = data
             
@@ -115,13 +126,17 @@ def train_model():
             optimizer.step()
             
             running_loss += loss.item()
+            _, predicted = torch.max(outputs.data, 1)
+            total += labels.size(0)
+            correct += (predicted == labels).sum().item()
             
-        print(f"Epoch {epoch+1}/{epochs} - Loss: {running_loss/len(train_loader):.4f}")
+        epoch_acc = 100 * correct / total
+        print(f"Epoch {epoch+1}/{epochs} - Loss: {running_loss/len(train_loader):.4f} - Accuracy: {epoch_acc:.2f}%")
     
+    print("\n[RESULT] Baseline Pre-training Accuracy (Synthetic Data): {:.2f}%".format(epoch_acc))
     # Save the model weights (to later quantize for MAX78000)
     torch.save(model.state_dict(), 'max78000_braille_dot_model.pth')
-    print("Training complete. Model saved.")
-    """
+    print("Training complete. Model weights saved to max78000_braille_dot_model.pth.")
     
     print("\nNext step for MAX78000 Deployment:")
     print("1. Train this model using PyTorch.")
